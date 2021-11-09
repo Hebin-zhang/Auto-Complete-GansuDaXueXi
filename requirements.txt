@@ -1,5 +1,5 @@
 requests
 beautifulsoup4
-re
+request
 urlretrieve
 json
