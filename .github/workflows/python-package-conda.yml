@@ -1,0 +1,38 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: AutoDaXueXi
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+  - cron:  '0 4 * * 3' # 北京时间每周三中午12点自动完成
+
+jobs:
+  submit:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: 'AutoDaXueXi'
+      env:
+        Level1options: ${{ secrets.L1 }}
+        Level2options: ${{ secrets.L2 }}
+        Level3options: ${{ secrets.L3 }}
+        Level4options: ${{ secrets.L4 }}
+        name: ${{ secrets.NAME }}
+        PPTOKEN: ${{ secrets.PPTOKEN }}
+      run: |
+        python AutoDaXueXi.py >> output.txt && cat output.txt
