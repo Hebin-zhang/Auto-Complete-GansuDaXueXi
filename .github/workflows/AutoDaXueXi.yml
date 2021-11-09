@@ -9,12 +9,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-  - cron:  '0 12 * * 3'
-  workflow_dispatch:  # Allow manual triggering
-    Scheduled:
-      inputs:
-        description: 'Scheduled Time'  # TO-DO
-        required: false
+  - cron:  '0 4 * * 3' # 北京时间每周三中午12点自动完成
 
 jobs:
   submit:
@@ -31,12 +26,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: 'Fuck'
+    - name: 'AutoDaXueXi'
       env:
         Level1options: ${{ secrets.L1 }}
         Level2options: ${{ secrets.L2 }}
         Level3options: ${{ secrets.L3 }}
         Level4options: ${{ secrets.L4 }}
         name: ${{ secrets.NAME }}
+        PPTOKEN: ${{ secrets.PPTOKEN }}
       run: |
-        python AutoFuckDaXueXi.py >> output.txt && cat output.txt  
+        python AutoDaXueXi.py >> output.txt && cat output.txt
