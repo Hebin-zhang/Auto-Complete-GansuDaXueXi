@@ -3,13 +3,11 @@ import requests
 import os
 from bs4 import BeautifulSoup
 import re
-from urllib.request import urlretrieve
 import json
 import ssl
  
 # This restores the same behavior as before.
 context = ssl._create_unverified_context()
-response = urllib.request.urlopen("https://no-valid-cert", context=context)
 
 # 报名青年大学习
 data = {
