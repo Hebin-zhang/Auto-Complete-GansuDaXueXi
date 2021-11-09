@@ -9,7 +9,7 @@ import json
 import ssl
  
 # This restores the same behavior as before.
-context = ssl._create_unverified_context()
+# context = ssl._create_unverified_context()
 
 # 报名青年大学习
 data = {
@@ -25,8 +25,8 @@ url = "http://gsqndxx.gsjiahua.com.cn/inserts?" + parse.urlencode(data)
 res = requests.post(
     url, headers={"Content-Type": "application/x-www-form-urlencoded"})
 
-print(url)
-print(res.text)
+# print(url)
+# print(res.text)
 
 # 提取url
 # res_url = requests.get('https://news.cyol.com/gb/channels/vrGlAKDl/')
@@ -39,8 +39,8 @@ print(res.text)
 # img_url = 'https://h5.cyol.com/special/daxuexi/' + identifier + '/images/end.jpg'
 
 # 推送结果及截图
-img_name = "screenshot"
-urlretrieve(img_url, 'screenshot.jpg')
+# img_name = "screenshot"
+# urlretrieve(img_url, 'screenshot.jpg')
 token = os.environ['PPTOKEN']
 title = '自动大学习'
 content = '本期青年大学习已完成' # ，截图已经生成\n' + img_url
