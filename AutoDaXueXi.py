@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 import requests
+from urllib import parse
 import os
 from bs4 import BeautifulSoup
 import re
