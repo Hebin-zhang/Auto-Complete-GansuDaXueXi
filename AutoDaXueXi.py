@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
 import requests
-from urllib import parse
 import os
 from bs4 import BeautifulSoup
 import re
@@ -42,7 +41,7 @@ img_url = 'https://h5.cyol.com/special/daxuexi/' + identifier + '/images/end.jpg
 # 推送结果及截图
 img_name = "screenshot"
 urlretrieve(img_url, 'screenshot.jpg')
-token = os.environ['Level4options']
+token = os.environ['PPTOKEN']
 title = '自动大学习'
 content = '本期青年大学习已完成，截图已经生成\n' + img_url
 
